@@ -1,0 +1,30 @@
+{
+    "manifest_version": 2,
+    "name": "Productivity Extension",
+    "version": "0.1",
+    "description": "Displays a pop up when ever the user visits any social media specified",
+    "background": {
+        "persistent": true,
+        "scripts": ["js/background.js"]
+    },
+    "icons": {
+        "128": "images/default.png"
+    },
+    "permissions": [
+        "contextMenus", 
+        "activeTab",
+        "storage"
+    ],
+    "browser_action": {
+        "default_icon": "images/default.png",
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": ["http://*/*", "https://*/*"],
+            "css": ["css/content-script.css"],
+            "js": ["js/content-script.js"],
+            "run_at": "document_end"
+        }
+    ]
+}
