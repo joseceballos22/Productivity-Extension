@@ -19,6 +19,7 @@
         "default_icon": "images/default.png",
         "default_popup": "popup.html"
     },
+    "web_accessible_resources": ["modal.html","modal.js"], 
     "content_scripts": [
         {
             "matches": ["http://*/*", "https://*/*"],
@@ -26,5 +27,7 @@
             "js": ["js/content-script.js"],
             "run_at": "document_end"
         }
-    ]
+    ],
+    "content_security_policy": 
+    "script-src 'self' https://code.jquery.com https://cdnjs.cloudflare.com https://stackpath.bootstrapcdn.com; object-src 'self'; style-src https://stackpath.bootstrapcdn.com https://fonts.googleapis.com https://pro.fontawesome.com https://stackpath.bootstrapcdn.com"
 }
