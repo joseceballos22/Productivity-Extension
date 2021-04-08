@@ -33,8 +33,25 @@ async function main() {
 
 
     // Getting an Awesome Image of Space using the flicker API 
+    const spacePicResponse = await fetch('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6b6890b9d5e32d1f7dc990bab3935422&tags=space&per_page=500&page=1&format=json&nojsoncallback=1');
+    const spacePics = await spacePicResponse.json();
+    // for(const key in spacePics) {
+    //     if(key === 'photos') {
+    //         console.log(typeof spacePics[key])
+    //         console.log(spacePics[key]['photo'])
+    //     }
+    // }
 
-    //Displaying the Quote and Image
+    if(_.isArray(spacePics['photos']['photo'])) {
+        console.log('Called')
+        const randomQuoteIndex = getRandomInt(spacePics['photos']['photo'].length);
+        const spacePic = spacePics['photos']['photo'][randomQuoteIndex];
+        const spacePicSrc = 'https://farm'+spacePic.farm+'.staticflickr.com/'+spacePic.server+'/'+spacePic.id+'_'+spacePic.secret+'.jpg';
+        console.log('Space Pic Src', spacePicSrc)
+        document.getElementById('motivationImage').src = spacePicSrc;
+    }
+
+
 }
 main(); 
 

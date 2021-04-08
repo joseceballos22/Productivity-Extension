@@ -5,3 +5,9 @@
     top: 0px;
     left: 0px;
 }
+@media (min-width: 768px) {
+    .modal-xl {
+      width: 90%;
+      max-width:1500px;
+    }
+}
