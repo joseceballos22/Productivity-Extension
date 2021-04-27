@@ -36,14 +36,8 @@ async function main() {
 
 
     // Getting an Awesome Image of Space using the flicker API 
-    const spacePicResponse = await fetch('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6b6890b9d5e32d1f7dc990bab3935422&tags=space&per_page=500&page=1&format=json&nojsoncallback=1');
+    const spacePicResponse = await fetch('https://api.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=6b6890b9d5e32d1f7dc990bab3935422&per_page=500&page=1&format=json&nojsoncallback=1&gallery_id=72157719034500913');
     const spacePics = await spacePicResponse.json();
-    // for(const key in spacePics) {
-    //     if(key === 'photos') {
-    //         console.log(typeof spacePics[key])
-    //         console.log(spacePics[key]['photo'])
-    //     }
-    // }
 
     if(_.isArray(spacePics['photos']['photo'])) {
         console.log('Called')
